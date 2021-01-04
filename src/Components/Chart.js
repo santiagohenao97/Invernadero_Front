@@ -10,7 +10,7 @@ import {
   ResponsiveContainer
 } from "recharts";
 
-const url = "https://juan.santiagohenao97.repl.co/api/temperatura";
+const url = "https://juan.santiagohenao97.repl.co/api/datos";
 
 export default class Temperatura extends Component {
   constructor(props) {
@@ -43,12 +43,12 @@ export default class Temperatura extends Component {
 
   render() {
     return (
-      <Card>
+      <Card className="m-3">
         <Card.Body>
-          <Card.Title>Temperatura</Card.Title>
+          <Card.Title>{this.props.titulo}</Card.Title>
           <ResponsiveContainer width="100%" height={300}>
             <AreaChart
-              data={this.state.data}
+              data={this.props.data}
               margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
             >
               <defs>
@@ -59,21 +59,21 @@ export default class Temperatura extends Component {
               </defs>
               <Area
                 type="monotone"
-                dataKey="temperatura"
-                stroke="rgb(106, 110, 229)"
+                dataKey={this.props.dataKey}
+                stroke="rgb(106, 10, 229)"
                 fill="url(#colorUv)"
               />
               <XAxis dataKey="registro">
                 <Label value="Fecha" offset={0} position="insideBottom" />
               </XAxis>
-              <YAxis
-                label={{
-                  value: "Temperatura °C",
-                  angle: -90,
-                  position: "insideLeft",
-                  offset: 10
-                }}
-              />
+              <YAxis>
+                <Label
+                  value={this.props.variable}
+                  offset={10}
+                  angle={"-90"}
+                  position="insideLeft"
+                />
+              </YAxis>
               <Tooltip />
             </AreaChart>
           </ResponsiveContainer>
