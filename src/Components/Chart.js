@@ -43,10 +43,10 @@ export default class Temperatura extends Component {
 
   render() {
     return (
-      <Card className="m-3">
+      <Card className="m-3 pb-4 chart">
         <Card.Body>
           <Card.Title>{this.props.titulo}</Card.Title>
-          <ResponsiveContainer width="100%" height={300}>
+          <ResponsiveContainer width="100%" height={"100%"}>
             <AreaChart
               data={this.props.data}
               margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
@@ -64,14 +64,14 @@ export default class Temperatura extends Component {
                 fill="url(#colorUv)"
               />
               <XAxis dataKey="registro">
-                <Label value="Fecha" offset={0} position="insideBottom" />
+                <Label value="Fecha" offset={-5} position="insideBottom" />
               </XAxis>
               <YAxis>
                 <Label
                   value={this.props.variable}
-                  offset={10}
+                  offset={-10}
                   angle={"-90"}
-                  position="insideLeft"
+                  position="insideBottomLeft"
                 />
               </YAxis>
               <Tooltip />
